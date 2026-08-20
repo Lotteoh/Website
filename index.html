@@ -66,11 +66,20 @@
     transition:background .5s ease,border-color .5s ease;
     border-bottom:1px solid transparent;
   }
+  header::before{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,
+      color-mix(in srgb,var(--paper) 78%,transparent) 0%,
+      color-mix(in srgb,var(--paper) 55%,transparent) 55%,
+      transparent 100%);
+    opacity:1;transition:opacity .5s ease;
+  }
   header.scrolled{
     background:color-mix(in srgb,var(--paper) 88%,transparent);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
+  header.scrolled::before{opacity:0;}
   .nav{
     display:flex;align-items:center;justify-content:space-between;
     height:76px;
@@ -384,7 +393,7 @@
 <section class="hero" id="top">
   <div class="wrap hero-inner reveal in">
     <p class="eyebrow hero-eyebrow">Danish &amp; English · your path to fluency</p>
-    <h1>Begin with the <em>hardest</em> word</h1>
+    <h1>Restart with the <em>easiest</em> word</h1>
     <p class="hero-sub">Language teaching for professionals, their partners and new arrivals who want to live and work in another language — and a translation service for when words and meaning have to be exactly right.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-solid">Book a session</a>
