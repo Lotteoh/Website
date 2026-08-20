@@ -8,7 +8,7 @@
 <script>document.documentElement.className += " js";</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
     --paper:#EDEEE9;      /* cool chalk, drawn from the photo's foggy light */
@@ -77,13 +77,14 @@
   }
   .brand{
     font-family:"Cormorant Garamond",serif;font-weight:500;
-    font-size:1.5rem;letter-spacing:.34em;text-transform:uppercase;
+    font-size:2.3rem;letter-spacing:.34em;text-transform:uppercase;
     padding-left:.34em; /* optical balance for tracking */
+    color:var(--book-red);
   }
   .nav-links{display:flex;gap:2.5rem;align-items:center;}
   .nav-links a{
     font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--ink);font-weight:400;position:relative;
+    color:var(--ink);font-weight:600;position:relative;
   }
   .nav-links a::after{
     content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;
@@ -113,6 +114,9 @@
       transparent 62%);
   }
   .hero-inner{position:relative;z-index:2;width:100%;padding-top:76px;}
+  @media(min-width:861px){
+    .hero-inner{transform:translateY(-50px);}
+  }
   .hero-eyebrow{margin-bottom:2rem;}
   .hero h1{
     font-size:clamp(3.1rem,4.2rem + 3.5vw,8.4rem);
@@ -155,15 +159,12 @@
     mix-blend-mode:multiply;
   }
   .signature .phrase{
-    font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:400;
-    font-size:clamp(1.4rem,1rem + 1.4vw,2.2rem);color:var(--ink);
-  }
-  .signature .ipa{
-    font-size:.72rem;letter-spacing:.14em;color:var(--stone);margin-top:.35rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;
+    font-size:clamp(1.4rem,1rem + 1.4vw,2.2rem);color:var(--book-red);
   }
   .signature .caption{
-    font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
-    color:var(--stone);margin-top:.5rem;
+    font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink);font-weight:500;margin-top:.55rem;
   }
 
   /* ---------- SECTIONS ---------- */
@@ -190,13 +191,21 @@
   .sec-head{max-width:60ch;margin-bottom:clamp(2.5rem,5vw,4rem);}
   .sec-head .eyebrow{display:block;margin-bottom:1.4rem;}
   .sec-head h2{font-size:clamp(2.1rem,1.6rem + 2.4vw,3.6rem);}
+  #contact .sec-head h2,
+  #services .sec-head h2,
+  #about .about-body h2{font-family:"Jost",system-ui,sans-serif;font-size:clamp(1.6rem,1.3rem + 1.4vw,2.4rem);font-weight:300;color:var(--ink);letter-spacing:normal;}
+  #formats .sec-head h2{
+    font-family:"Jost",system-ui,sans-serif;font-weight:300;letter-spacing:normal;
+    font-size:clamp(1.6rem,1.3rem + 1.4vw,2.4rem);white-space:nowrap;
+  }
   .lead{font-size:clamp(1.4rem,1.2rem + 0.8vw,1.9rem);
-    font-family:"Cormorant Garamond",serif;font-weight:300;line-height:1.35;
+    font-family:"Jost",system-ui,sans-serif;font-weight:300;letter-spacing:normal;line-height:1.35;
     max-width:26ch;color:var(--ink);}
 
   /* Intro statement */
   .statement{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,6vw,6rem);align-items:start;}
   .statement p{color:var(--stone);margin:0 0 1.2rem;}
+  .statement p.lead{color:var(--ink);}
   .statement p:last-child{margin-bottom:0;}
 
   /* Services */
@@ -208,21 +217,30 @@
   }
   .service:hover{padding-left:1rem;}
   .service .idx{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--accent);}
-  .service h3{font-size:clamp(1.7rem,1.4rem + 1vw,2.4rem);margin-bottom:.6rem;}
+  .service h3{
+    font-family:"Jost",system-ui,sans-serif;font-weight:300;color:var(--ink);letter-spacing:normal;
+    font-size:clamp(1.4rem,1.15rem + .85vw,2rem);margin-bottom:.6rem;
+  }
   .service p{color:var(--stone);max-width:52ch;margin:0;}
   .service .tags{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);white-space:nowrap;}
 
   /* Formats */
-  .formats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .formats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
   .format{background:var(--paper);padding:clamp(1.8rem,4vw,2.8rem);}
   .section-alt .format{background:var(--paper-2);}
   .format .eyebrow{display:block;margin-bottom:1rem;}
-  .format h3{font-size:1.7rem;margin-bottom:.5rem;}
+  .format h3{
+    font-family:"Jost",system-ui,sans-serif;font-weight:300;letter-spacing:normal;
+    font-size:clamp(1.4rem,1.15rem + .85vw,2rem);margin-bottom:.5rem;
+  }
   .format p{color:var(--stone);margin:0;font-size:.98rem;}
 
   /* Pricing */
   .price-groups{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);}
-  .price-group h3{font-size:1.6rem;margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line);}
+  .price-group h3{
+    font-family:"Jost",system-ui,sans-serif;font-weight:300;color:var(--ink);letter-spacing:normal;
+    font-size:1.6rem;margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--line);
+  }
   .price-row{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:.85rem 0;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);}
   .price-row:last-child{border-bottom:0;}
   .price-row .name{color:var(--ink);}
@@ -335,6 +353,7 @@
     .hero-actions{flex-direction:column;align-items:stretch;}
     .hero-actions .btn{width:100%;text-align:center;}
     .about-stats{grid-template-columns:1fr 1fr;gap:1.4rem 1.2rem;}
+    #formats .sec-head h2{white-space:normal;letter-spacing:normal;}
     .foot-top{align-items:flex-start;}
     .foot-links{flex-direction:column;gap:.8rem;}
   }
@@ -364,9 +383,9 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap hero-inner reveal in">
-    <p class="eyebrow hero-eyebrow">Danish &amp; English · for professionals</p>
-    <h1>Begin with the <em>hardest</em> word.</h1>
-    <p class="hero-sub">Language coaching for people who need to work in another language — and translation for when the words have to be exactly right. Built around your goals, your field and your level.</p>
+    <p class="eyebrow hero-eyebrow">Danish &amp; English · your path to fluency</p>
+    <h1>Begin with the <em>hardest</em> word</h1>
+    <p class="hero-sub">Language coaching for professionals, their partners and new arrivals who want to live and work in another language — and a translation service for when words and meaning have to be exactly right.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-solid">Book a session</a>
       <a href="#services" class="btn btn-line">Explore modules</a>
@@ -374,18 +393,17 @@
   </div>
   <div class="signature" aria-hidden="true">
     <div class="phrase">rødgrød med fløde</div>
-    <div class="ipa">/ˈʁœðˌɡʁœˀð·mɛ·ˈfløːðə/</div>
-    <div class="caption">the phrase that named us</div>
+    <div class="caption">the phrase behind the name</div>
   </div>
 </section>
 
 <!-- STATEMENT -->
 <section class="section">
   <div class="wrap statement reveal">
-    <p class="lead">Fluency is a working skill, not a certificate.</p>
+    <p class="lead">Fluency is a skill you use, not a certificate you earn</p>
     <div>
-      <p>Rødgrød is a language consultancy for professionals. We coach Danish and English the way you'll actually use them — in meetings, presentations, negotiations and the everyday correspondence that quietly shapes how you come across.</p>
-      <p>Every engagement starts from where you are. No fixed syllabus, no filler. Just a clear route from your current level to the room you need to walk into.</p>
+      <p>Rødgrød is a language consultancy for anyone who wants to live fully in Danish or English — professionals navigating meetings and negotiations, partners settling into a new life here, or simply people who want to speak with more ease and confidence. I coach the language you'll actually use: at work, at the school gate, with neighbours, in the conversations that make a place feel like home.</p>
+      <p>Every session starts from where you are. No fixed syllabus. Just a clear path from your current level to what you want to achieve.</p>
     </div>
   </div>
 </section>
@@ -395,30 +413,30 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Learning modules</span>
-      <h2>Three ways we work with language.</h2>
+      <h2>Three ways I work with language</h2>
     </div>
     <div class="services reveal">
       <div class="service">
         <span class="idx">01</span>
         <div>
-          <h3>Danish for professionals</h3>
-          <p>From workplace basics to confident fluency. For newcomers finding their footing and for near-native speakers polishing tone, idiom and register.</p>
+          <h3>Danish, from the ground up</h3>
+          <p>From everyday essentials — the school gate, the supermarket, the doctor's — to confident fluency at work. For newcomers finding their footing and for near-native speakers wanting to perfect their language.</p>
         </div>
         <span class="tags">Beginner → Advanced</span>
       </div>
       <div class="service">
         <span class="idx">02</span>
         <div>
-          <h3>English for professionals</h3>
-          <p>Presentations, negotiation, reporting and correspondence. We build the vocabulary of your field and the confidence to use it under pressure.</p>
+          <h3>English, for work and life</h3>
+          <p>Presentations, negotiation and correspondence — plus the everyday English of meeting people, settling in, and feeling at home in the conversation.</p>
         </div>
-        <span class="tags">Business · Academic</span>
+        <span class="tags">Business · Everyday</span>
       </div>
       <div class="service">
         <span class="idx">03</span>
         <div>
           <h3>Translation &amp; editing</h3>
-          <p>Information material, reports and web copy translated and refined between Danish and English — accurate, natural, and true to your voice.</p>
+          <p>Information material, reports, web copy — and personal documents — translated and refined between Danish and English. Accurate and natural.</p>
         </div>
         <span class="tags">DA ⇄ EN</span>
       </div>
@@ -431,28 +449,23 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">How it runs</span>
-      <h2>Individual or group. Online or in person.</h2>
+      <h2>Individual · Group · Online</h2>
     </div>
     <div class="formats reveal">
       <div class="format">
         <span class="eyebrow">One to one</span>
         <h3>Individual</h3>
-        <p>A course built entirely around your goals, pace and schedule. The fastest route to real progress.</p>
+        <p>A course built entirely around your goals, pace and schedule — the fastest route to real progress, whatever you're working towards.</p>
       </div>
       <div class="format">
-        <span class="eyebrow">Small teams</span>
+        <span class="eyebrow">Small groups</span>
         <h3>Group</h3>
-        <p>Shared momentum for teams and departments learning together, with content tuned to your workplace.</p>
+        <p>Shared momentum for colleagues, couples, families or friends learning together, with content tailored to your group.</p>
       </div>
       <div class="format">
         <span class="eyebrow">Anywhere</span>
         <h3>Online</h3>
-        <p>Live sessions wherever you are, with materials and follow-ups you keep between meetings.</p>
-      </div>
-      <div class="format">
-        <span class="eyebrow">Face to face</span>
-        <h3>In person</h3>
-        <p>On-site or private sessions when presence matters — for practice that mirrors the real room.</p>
+        <p>Live sessions wherever you are.</p>
       </div>
     </div>
   </div>
@@ -463,7 +476,6 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Fees</span>
-      <h2>Clear pricing. No packages you don't need.</h2>
     </div>
     <div class="price-groups reveal">
       <div class="price-group">
@@ -481,7 +493,7 @@
           <div class="fig"><span class="from">from</span>7.900 kr</div>
         </div>
         <div class="price-row">
-          <div class="name">Group module<small>per participant · 10 sessions</small></div>
+          <div class="name">Group module<small>per participant, small group · 10 sessions</small></div>
           <div class="fig"><span class="from">from</span>3.400 kr</div>
         </div>
       </div>
@@ -505,7 +517,7 @@
         </div>
       </div>
     </div>
-    <p class="price-note reveal">All prices excl. VAT. Group and corporate rates are quoted per engagement — start with a free intro consultation.</p>
+    <p class="price-note reveal">All prices excl. VAT. Group rates are quoted per engagement, whatever the group — colleagues, couples, families or friends. Start with a free intro consultation.</p>
   </div>
 </section>
 
@@ -520,20 +532,16 @@
     </figure>
     <div class="about-body reveal">
       <span class="eyebrow">About</span>
-      <h2>Hi — I'm Charlotte.</h2>
-      <p>I started Rødgrød after fifteen years of teaching language the way people actually use it at work: in meetings, on stage, and in the everyday emails that quietly shape how you're seen.</p>
-      <p>My training is in linguistics and translation, but what I really coach is confidence — helping capable people stop translating in their head and start thinking in the language. Every course is built around your words, not a textbook someone else wrote.</p>
-      <p>Danish, English, and the space between them: that's home for me.</p>
-      <div class="about-stats">
-        <div><span class="stat-fig">15+</span><span class="stat-label">Years coaching</span></div>
-        <div><span class="stat-fig">400+</span><span class="stat-label">Professionals taught</span></div>
-        <div><span class="stat-fig">96%</span><span class="stat-label">Would recommend</span></div>
-      </div>
+      <h2>Hello, I'm Charlotte</h2>
+      <p><strong>Why Rødgrød?</strong> Ask any non-Dane to say "rødgrød med fløde" and watch them try — it's a beloved Danish dessert and, unofficially, a rite of passage for anyone learning the language.</p>
+      <p>Language is more than grammar and vocabulary. At its core, it's about communication and connection — and the ability to master the language whether you're at the school gates, in a meeting, or simply finding the words to express who you are.</p>
+      <p>Native Danish, I lived, worked, and raised a family in London for 25 years before relocating back to Denmark. I have spent 18 years teaching language at an international school in Denmark — an experience that gave me a firsthand, unique insight into navigating a new language and culture, both in everyday life and the workplace. That experience became the foundation for Rødgrød.</p>
+      <p>I teach linguistics. But more than that, I coach confidence. My approach is bespoke, built around your words, your context, and your vision for where language should take you.</p>
+      <p>Alongside teaching, I also translate — across English and Danish. Recent projects include translating a company website into English and translation work for a museum.</p>
       <ul class="about-creds">
-        <li>MA in Linguistics — University of Copenhagen</li>
-        <li>State-authorised translator, Danish ⇄ English</li>
-        <li>Former lecturer, Copenhagen Business School</li>
-        <li>Cambridge CELTA certified</li>
+        <li>Native Danish, fluent in English</li>
+        <li>25 years living and working in London</li>
+        <li>18 years teaching in international school</li>
       </ul>
     </div>
   </div>
@@ -544,23 +552,19 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Get in touch</span>
-      <h2>Tell us where you want to get to.</h2>
+      <h2>Find your starting point</h2>
     </div>
     <div class="contact-grid">
       <div class="contact-intro reveal">
-        <p>Send a few details and we'll reply within two business days with a suggested route and a time for your free intro consultation.</p>
+        <p>Send a few details and I'll reply with a time for your free intro consultation.</p>
         <div class="contact-detail">
           <div>
             <span class="eyebrow">Email</span>
-            <a href="mailto:hello@roedgroed.com">hello@roedgroed.com</a>
+            <a href="mailto:hello@rodgrodfluency.com">hello@rodgrodfluency.com</a>
           </div>
           <div>
             <span class="eyebrow">Web</span>
-            <a href="http://www.roedgroed.com">www.roedgroed.com</a>
-          </div>
-          <div>
-            <span class="eyebrow">Response time</span>
-            Within 2 business days
+            <a href="https://www.rodgrodfluency.com">www.rodgrodfluency.com</a>
           </div>
         </div>
       </div>
@@ -620,13 +624,13 @@
           </div>
           <div class="form-actions">
             <button type="submit" class="btn">Send message</button>
-            <span class="form-note">We'll only use your details to reply.</span>
+            <span class="form-note">I'll only use your details to reply.</span>
           </div>
         </form>
 
         <div class="form-success" id="formSuccess" role="status" aria-live="polite">
-          <h3>Thank you.</h3>
-          <p id="successText">Your message is on its way. We'll be in touch within two business days.</p>
+          <h3>Thank you</h3>
+          <p id="successText">Your message is on its way. I'll be in touch soon.</p>
           <button type="button" id="sendAnother">Send another message</button>
         </div>
       </div>
@@ -696,7 +700,7 @@
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
   const successText = document.getElementById('successText');
-  const CONTACT_EMAIL = 'hello@roedgroed.com';
+  const CONTACT_EMAIL = 'hello@rodgrodfluency.com';
 
   const setError = (name, msg) => {
     const field = form.querySelector(`#${name}`).closest('.field');
@@ -710,7 +714,7 @@
     email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email.',
     interest: v => v ? '' : 'Please choose an option.',
     format: v => v ? '' : 'Please choose a format.',
-    message: v => v.trim().length >= 5 ? '' : 'Tell us a little about your goal.'
+    message: v => v.trim().length >= 5 ? '' : 'Tell me a little about your goal.'
   };
 
   form.addEventListener('submit', (e) => {
@@ -739,7 +743,7 @@ ${data.get('message')}`;
 
     const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    successText.textContent = `Thanks, ${data.get('name').split(' ')[0]}. Your email app is opening so you can send this to us — we'll reply within two business days.`;
+    successText.textContent = `Thanks, ${data.get('name').split(' ')[0]}. Your email app is opening so you can send this to me — I'll be in touch soon.`;
     form.style.display = 'none';
     success.classList.add('show');
     success.scrollIntoView({behavior:'smooth', block:'center'});
