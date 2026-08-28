@@ -148,6 +148,10 @@
   }
   .hero-sub{
     max-width:46ch;color:var(--stone);font-size:1.075rem;
+    margin-bottom:1.1rem;
+  }
+  .hero-note{
+    max-width:46ch;color:var(--stone);font-size:1.075rem;
     margin-bottom:2.6rem;
   }
   .hero-actions{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap;}
@@ -394,7 +398,8 @@
   <div class="wrap hero-inner reveal in">
     <p class="eyebrow hero-eyebrow">Danish &amp; English · your path to fluency</p>
     <h1>Begin with the <em>hardest</em> word</h1>
-    <p class="hero-sub">I teach Danish and English to people who actually need to use it — professionals, partners who've relocated, people just starting life here. And when the wording really matters, I do translation too.</p>
+    <p class="hero-sub">I teach Danish and English to people who need to use it — for work, or simply for life here.</p>
+    <p class="hero-note">I also translate and edit, between Danish and English.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-solid">Book a session</a>
       <a href="#services" class="btn btn-line">Explore modules</a>
@@ -411,8 +416,8 @@
   <div class="wrap statement reveal">
     <p class="lead">You don't get fluent passing a test — you get fluent by using the language</p>
     <div>
-      <p>I work with people who need the language for real life, not just for a textbook: professionals who have to hold a meeting, partners who've moved here for someone else's job, people who just want to stop translating everything in their head — at the school gate, with neighbours, wherever it comes up.</p>
-      <p>Every session starts where you actually are. There's no set syllabus — just a plan for getting from your current level to where you want to be.</p>
+      <p>I work with people who need the language for real life, not for a textbook: professionals who have to hold a meeting, partners who've moved here for someone else's job and people who want to stop translating everything in their head — at the school gate, with neighbours or wherever it comes up.</p>
+      <p>Every session starts where you are. There's no set syllabus — a plan for getting from your current level to where you want to be.</p>
     </div>
   </div>
 </section>
@@ -429,7 +434,7 @@
         <span class="idx">01</span>
         <div>
           <h3>Danish, from the ground up</h3>
-          <p>I teach Danish for whatever you actually need it for: sorting things out at the doctor's, holding your own in a meeting, or just starting from nothing. Some people are near native speakers and just want to polish their language skills.</p>
+          <p>I teach Danish for whatever you need it for: sorting things out at the doctor's, holding your own in a meeting, or starting from the beginning. Some people are near native speakers and just want to polish their language skills.</p>
         </div>
         <span class="tags">Beginner → Advanced</span>
       </div>
@@ -437,7 +442,7 @@
         <span class="idx">02</span>
         <div>
           <h3>English, for work and life</h3>
-          <p>English for feeling confident at work in meetings and correspondence and everyday English to feel confident when meeting people.</p>
+          <p>English for feeling confident at work, in meetings and everyday English to feel confident when meeting people.</p>
         </div>
         <span class="tags">Business · Everyday</span>
       </div>
@@ -445,7 +450,7 @@
         <span class="idx">03</span>
         <div>
           <h3>Translation &amp; editing</h3>
-          <p>I translate and edit — company websites, reports, personal documents, whatever needs to move between Danish and English without losing what it's actually trying to say.</p>
+          <p>I translate and edit whatever needs to move between Danish and English.</p>
         </div>
         <span class="tags">DA ⇄ EN</span>
       </div>
@@ -539,11 +544,11 @@
     <div class="about-body reveal">
       <span class="eyebrow">About</span>
       <h2>Hello, I'm Charlotte</h2>
-      <p><strong>Why Rødgrød?</strong> Ask any non-Dane to say "rødgrød med fløde" and watch them try — it's a beloved Danish dessert and, unofficially, a rite of passage for anyone learning the language.</p>
-      <p>Language is more than grammar and vocabulary. At its core, it's about communication and connection — and the ability to master the language whether you're at the school gates, in a meeting, or simply finding the words to express who you are.</p>
-      <p>Native Danish, I lived, worked, and raised a family in London for 25 years before relocating back to Denmark. I have spent 18 years teaching language at an international school in Denmark — an experience that gave me a firsthand, unique insight into navigating a new language and culture, both in everyday life and the workplace. That experience became the foundation for Rødgrød.</p>
-      <p>I teach linguistics. But more than that, I teach confidence. My approach is bespoke, built around your words, your context, and your vision for where language should take you.</p>
-      <p>Alongside teaching, I also translate — across English and Danish. Recent projects include translating a company website into English and translation work for a museum.</p>
+      <p><strong>Why Rødgrød?</strong> Try asking a non-Dane to say "rødgrød med fløde" — it's a Danish dessert, and being able to say it correctly is a rite of passage if you're learning the language.</p>
+      <p>Language isn't just grammar and vocabulary — it's how you connect with people, whether that's at the school gate, in a meeting, or trying to say what you mean.</p>
+      <p>I'm Danish, but I lived, worked and raised a family in London for 25 years before moving back to Denmark. I've spent 18 years teaching language at an international school here, and it gave me a real sense of what it's like to navigate a new language and culture — not just in the classroom, but at work and in everyday life. That's where Rødgrød came from.</p>
+      <p>I teach linguistics, but most of what I'm doing is helping people feel confident using it. Every course is built around you and your language needs.</p>
+      <p>I do translation too, between English and Danish. Lately that's included translating a company website into English, and some work for a museum.</p>
       <ul class="about-creds">
         <li>Native Danish, fluent in English</li>
         <li>25 years living and working in London</li>
@@ -566,7 +571,7 @@
         <div class="contact-detail">
           <div>
             <span class="eyebrow">Email</span>
-            <a href="mailto:hello@rodgrodfluency.com">hello@rodgrodfluency.com</a>
+            <a href="mailto:charlotte@rodgrodfluency.com">charlotte@rodgrodfluency.com</a>
           </div>
           <div>
             <span class="eyebrow">Web</span>
@@ -706,7 +711,7 @@
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
   const successText = document.getElementById('successText');
-  const CONTACT_EMAIL = 'hello@rodgrodfluency.com';
+  const CONTACT_EMAIL = 'charlotte@rodgrodfluency.com';
 
   const setError = (name, msg) => {
     const field = form.querySelector(`#${name}`).closest('.field');
