@@ -317,6 +317,7 @@
   button[type=submit]{cursor:pointer;background:var(--ink);color:var(--paper);border:1px solid var(--ink);}
   button[type=submit]:hover{background:var(--accent);border-color:var(--accent);}
   .form-note{font-size:.78rem;color:var(--stone);}
+  .form-note.error{color:var(--book-red);}
 
   .form-success{
     border:1px solid var(--accent);padding:clamp(2rem,5vw,3rem);
@@ -596,6 +597,7 @@
 
       <div class="reveal">
         <form id="contactForm" novalidate>
+          <input type="hidden" name="_subject" value="New enquiry from rodgrodfluency.com" />
           <div class="row-2">
             <div class="field">
               <label for="name">Name</label>
@@ -650,6 +652,7 @@
           <div class="form-actions">
             <button type="submit" class="btn">Send message</button>
             <span class="form-note">I’ll only use your details to reply.</span>
+            <span class="form-note error" id="submitError" style="display:none;">Something went wrong sending that — please try again, or email me directly.</span>
           </div>
         </form>
 
@@ -721,11 +724,13 @@
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Contact form: validation + confirmation + mailto compose
+  // Contact form: validation + confirmation + Formspree submission
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
   const successText = document.getElementById('successText');
-  const CONTACT_EMAIL = 'charlotte@rodgrodfluency.com';
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitError = document.getElementById('submitError');
+  const FORM_ENDPOINT = 'https://formspree.io/f/mvkonjrp';
 
   const setError = (name, msg) => {
     const field = form.querySelector(`#${name}`).closest('.field');
@@ -754,32 +759,40 @@
 
     if (firstInvalid){ firstInvalid.focus(); return; }
 
-    // Build a mailto so the message actually reaches the business (no backend needed).
+    submitError.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
     const data = new FormData(form);
-    const subject = `New enquiry — ${data.get('interest')}`;
-    const body =
-`Name: ${data.get('name')}
-Email: ${data.get('email')}
-Interested in: ${data.get('interest')}
-Format: ${data.get('format')}
-Level: ${data.get('level') || '—'}
+    const firstName = data.get('name').split(' ')[0];
 
-${data.get('message')}`;
-
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    successText.textContent = `Thanks, ${data.get('name').split(' ')[0]}. Your email app is opening so you can send this to me — I’ll be in touch soon.`;
-    form.style.display = 'none';
-    success.classList.add('show');
-    success.scrollIntoView({behavior:'smooth', block:'center'});
-
-    // Open the user's mail client with everything pre-filled.
-    window.location.href = mailto;
+    // Send the enquiry to Formspree, which forwards it straight to Charlotte's inbox.
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+      if (response.ok) {
+        successText.textContent = `Thanks, ${firstName}. Your message is on its way — I’ll be in touch soon.`;
+        form.style.display = 'none';
+        success.classList.add('show');
+        success.scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        submitError.style.display = 'block';
+      }
+    }).catch(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+      submitError.style.display = 'block';
+    });
   });
 
   document.getElementById('sendAnother').addEventListener('click', () => {
     form.reset();
     Object.keys(validators).forEach(n => setError(n, ''));
+    submitError.style.display = 'none';
     success.classList.remove('show');
     form.style.display = '';
     form.querySelector('#name').focus();
